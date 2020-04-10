@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="play_against_computer">Play Against Computer</string>
+    <string name="_2_player">2 Player</string>
+    <string name="play_online">Play Online</string>
+    <string name="tic_tac_toe">Tic Tac Toe</string>
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="spot0">Button</string>
+    <string name="main_menu">Main menu</string>
+</resources>
