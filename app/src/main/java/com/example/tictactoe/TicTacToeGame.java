@@ -88,7 +88,7 @@ public class TicTacToeGame {
                     break;
             }
         }
-        else if (level == 8){
+        else if (level == 9){
             gameState = GameState.DRAW;
         }
         else{
