@@ -1,6 +1,8 @@
 package com.example.tictactoe;
 
-public class TicTacToeGame {
+import java.io.Serializable;
+
+public class TicTacToeGame implements Serializable {
     private CellValue[] board;
     private int level;
     private GameState gameState;

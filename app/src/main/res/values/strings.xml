@@ -15,4 +15,6 @@
     <string name="_8">8</string>
     <string name="spot0">Button</string>
     <string name="main_menu">Main menu</string>
+    <string name="button">Button</string>
+    <string name="textview">TextView</string>
 </resources>

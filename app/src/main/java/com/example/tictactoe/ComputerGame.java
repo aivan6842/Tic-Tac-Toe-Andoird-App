@@ -51,15 +51,22 @@ public class ComputerGame extends AppCompatActivity {
         }
 
         int buttonIndex = getIndexOfButton(v);
+
+        if (game.valueAt(buttonIndex) != CellValue.EMPTY){
+            return;
+        }
+
         game.play(buttonIndex);
         Button playedButton = (Button) findViewById(v.getId());
         playedButton.setText(game.valueAt(buttonIndex).toString());
 
         if (game.getGameState() != GameState.PLAYING){
             Intent intent = new Intent(this, EndGamePopUp.class);
+            intent.putExtra("TicTacToe", game);
             startActivity(intent);
         }
     }
+
 
     private int getIndexOfButton(View v){
         Integer buttonid = v.getId();
