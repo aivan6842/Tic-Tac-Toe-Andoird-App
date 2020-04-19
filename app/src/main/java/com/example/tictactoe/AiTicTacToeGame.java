@@ -1,8 +1,10 @@
 package com.example.tictactoe;
 
-public class AiTicTacToeGame {
+import java.io.Serializable;
 
-    private CellValue[][] board;
+public class AiTicTacToeGame implements Serializable, TicTacToeGame {
+
+    public CellValue[][] board;
     private int level;
 
     public AiTicTacToeGame(){
@@ -157,8 +159,24 @@ public class AiTicTacToeGame {
         return board[row][col];
     }
 
-    protected CellValue nextCellValue(){
+    public CellValue nextCellValue(){
         return (level%2 == 0) ? CellValue.X : CellValue.O;
+    }
+
+    public GameState getGameState(){
+        int intGameState = checkWin();
+        if (intGameState == -10) {
+            return GameState.OWON;
+        }
+        else if (intGameState == 10){
+            return  GameState.XWON;
+        }
+        else if (level == 9){
+            return GameState.DRAW;
+        }
+        else{
+            return GameState.PLAYING;
+        }
     }
 
 

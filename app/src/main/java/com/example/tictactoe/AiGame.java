@@ -1,6 +1,7 @@
 package com.example.tictactoe;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -91,8 +92,11 @@ public class AiGame extends AppCompatActivity {
         CellValue cellValue = game.valueAt(row, col);
         playedButton.setText(cellValue.toString());
 
-        if (game.checkWin() == 10 || game.checkWin() == -10){
-            System.out.println("Won");
+//        System.out.println(game.getGameState());
+//        System.out.println(Arrays.toString(game.board[0]) + "\n" + Arrays.toString(game.board[1]) + "\n" + Arrays.toString(game.board[2]));
+
+        if (game.getGameState() != GameState.PLAYING){
+            throw new IllegalStateException("Should not be winning on O move");
         }
         else{
             int[] bestMove = game.findBestMove();
@@ -102,6 +106,12 @@ public class AiGame extends AppCompatActivity {
             Button playedAiButton = (Button) findViewById(buttons[bestrow][bestcol]);
             CellValue cellValuebest = game.valueAt(bestrow, bestcol);
             playedAiButton.setText(cellValuebest.toString());
+
+            if (game.getGameState() != GameState.PLAYING){
+                Intent intent = new Intent(this, EndGamePopUp.class);
+                intent.putExtra("TicTacToe", game);
+                startActivity(intent);
+            }
         }
 
 

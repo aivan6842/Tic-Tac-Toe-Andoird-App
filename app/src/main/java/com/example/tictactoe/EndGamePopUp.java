@@ -1,15 +1,15 @@
 package com.example.tictactoe;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class EndGamePopUp extends AppCompatActivity {
-
-    protected static boolean active;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class EndGamePopUp extends AppCompatActivity {
     }
 
     private void addWinnerText(){
-        TicTacToeGame game = (TicTacToeGame)getIntent().getSerializableExtra("TicTacToe");
+        TicTacToeGame game = (TicTacToeGame) getIntent().getSerializableExtra("TicTacToe");
         int  textViewId = getResources().getIdentifier("textViewWinner" , "id", getPackageName());
         TextView curr = (TextView) findViewById(textViewId);
         GameState endGameState = game.getGameState();
@@ -42,7 +42,8 @@ public class EndGamePopUp extends AppCompatActivity {
     }
 
     public void goBackHome(View view){
-        finish();
-        ComputerGame.compGame.finish();
+        ActivityCompat.finishAffinity(EndGamePopUp.this);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

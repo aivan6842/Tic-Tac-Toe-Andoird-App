@@ -14,7 +14,7 @@ import java.util.List;
 public class ComputerGame extends AppCompatActivity {
 
     private Integer[] buttons;
-    private TicTacToeGame game;
+    private TwoPlayerTicTacToeGame game;
     protected static Activity compGame;
 
     @Override
@@ -26,7 +26,7 @@ public class ComputerGame extends AppCompatActivity {
 
     private void startGame(){
         compGame = this;
-        game = new TicTacToeGame();
+        game = new TwoPlayerTicTacToeGame();
         buttons = new Integer[9];
         List<Integer> allButtons = getAllButtons();
         for (int i=0;i<allButtons.size();i++){
@@ -64,7 +64,6 @@ public class ComputerGame extends AppCompatActivity {
             Intent intent = new Intent(this, EndGamePopUp.class);
             intent.putExtra("TicTacToe", game);
             startActivity(intent);
-
         }
     }
 
