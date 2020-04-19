@@ -26,6 +26,7 @@
         android:id="@+id/aiButton"
         android:layout_width="250dp"
         android:layout_height="100dp"
+        android:onClick="createAiGame"
         android:text="@string/play_against_computer"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="34sp"

@@ -18,5 +18,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ComputerGame.class);
         startActivity(intent);
     }
+
+    public void createAiGame(View v){
+        Intent intent = new Intent(this, AiGame.class);
+        startActivity(intent);
+    }
 }
 
