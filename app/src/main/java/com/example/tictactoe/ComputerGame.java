@@ -1,5 +1,6 @@
 package com.example.tictactoe;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,11 +13,9 @@ import java.util.List;
 
 public class ComputerGame extends AppCompatActivity {
 
-    private CellValue[] board;
     private Integer[] buttons;
-    private int level;
-    private GameState gameState;
     private TicTacToeGame game;
+    protected static Activity compGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -26,6 +25,7 @@ public class ComputerGame extends AppCompatActivity {
     }
 
     private void startGame(){
+        compGame = this;
         game = new TicTacToeGame();
         buttons = new Integer[9];
         List<Integer> allButtons = getAllButtons();
@@ -64,6 +64,7 @@ public class ComputerGame extends AppCompatActivity {
             Intent intent = new Intent(this, EndGamePopUp.class);
             intent.putExtra("TicTacToe", game);
             startActivity(intent);
+
         }
     }
 
