@@ -1,7 +1,5 @@
 package com.example.tictactoe;
 
-import java.util.Arrays;
-
 public class AiTicTacToeGame {
 
     private CellValue[][] board;
@@ -21,61 +19,6 @@ public class AiTicTacToeGame {
         }
     }
 
-//    private int[] getMoveLocation(){
-//        boolean validnum = false;
-//        boolean validpos = false;
-//        int row=-1;
-//        int col=-1;
-//        while(!validpos){
-//            while(!validnum){
-//                try{
-//                    System.out.println("Enter a row number: ");
-//                    if (sc.hasNextInt()){
-//                        row = sc.nextInt()-1;
-//                    }
-//                    else{
-//                        sc.next();
-//                        continue;
-//                    }
-//                    if (row >= 0 && row <= 2){
-//                        validnum = true;
-//                    }
-//                }
-//                catch(Exception e){
-//                    System.out.println("Please enter a valid integer between 1 and 3.");
-//                }
-//            }
-//            validnum = false;
-//            while(!validnum){
-//                try{
-//                    System.out.println("Enter a column number: ");
-//                    if (sc.hasNextInt()){
-//                        col = sc.nextInt()-1;
-//                    }
-//                    else{
-//                        sc.next();
-//                        continue;
-//                    }
-//                    if (col >= 0 && col <= 2){
-//                        System.out.println("yes");
-//                        validnum = true;
-//                    }
-//                }
-//                catch(Exception e){
-//                    System.out.println("Please enter a valid integer between 1 and 3.");
-//                }
-//            }
-//            if (board[row][col] == CellValue.EMPTY){
-//                validpos = true;
-//            }
-//            else{
-//                System.out.println("This position has already been played.");
-//                validnum=false;
-//            }
-//        }
-//        return new int[] {row, col};
-//    }
-
     protected void play(int row, int col){
         if (row >= 3 || row < 0 || col >= 3 || col < 0){
             throw new IllegalArgumentException("Outside the board");
@@ -83,39 +26,10 @@ public class AiTicTacToeGame {
         if (board[row][col] != CellValue.EMPTY){
            throw new IllegalArgumentException();
         }
-
-        System.out.println(nextCellValue());
         board[row][col] = nextCellValue();
         level++;
-        System.out.println(valueAt(row, col));
-        System.out.println(Arrays.toString(board[0]) + "\n" + Arrays.toString(board[1]) + "\n" + Arrays.toString(board[2]));
+
     }
-
-
-
-
-
-//    private void play(){
-//        do {
-//            int[] aiMove = findBestMove();
-//            board[aiMove[0]][aiMove[1]] = CellValue.X;
-//            System.out.println(this);
-//            if (movesLeft() && checkWin() != 10 && checkWin() != -10){
-//                int[] personMove = getMoveLocation();
-//                board[personMove[0]][personMove[1]] = CellValue.O;
-//            }
-//        }while(movesLeft() && checkWin() != 10 && checkWin() != -10);
-//        if (!movesLeft()){
-//            System.out.println("Draw!");
-//        }
-//        else if (checkWin() == 10){
-//            System.out.println("X Won!");
-//        }
-//        else{
-//            System.out.println("O Won!");
-//        }
-//        sc.close();
-//    }
 
     protected int checkWin(){
         for (int i=0;i<3;i++){

@@ -39,8 +39,6 @@ public class AiGame extends AppCompatActivity {
             }
         }
 
-        //System.out.println(Arrays.toString(buttons[0]));
-
         int[] bestMove = game.findBestMove();
         int row = bestMove[0];
         int col = bestMove[1];
@@ -67,7 +65,6 @@ public class AiGame extends AppCompatActivity {
                 if (buttons[i][j] == buttonId){
                     buttonIndex.add(i);
                     buttonIndex.add(j);
-                    System.out.println();
                     return buttonIndex;
                 }
             }
@@ -87,13 +84,11 @@ public class AiGame extends AppCompatActivity {
         if (game.valueAt(row, col) != CellValue.EMPTY){
             return;
         }
-        System.out.println(row + " " + col);
 
 
         game.play(row, col);
         Button playedButton = (Button) findViewById(buttons[row][col]);
         CellValue cellValue = game.valueAt(row, col);
-        System.out.println(cellValue + "to be played");
         playedButton.setText(cellValue.toString());
 
         if (game.checkWin() == 10 || game.checkWin() == -10){
@@ -106,7 +101,6 @@ public class AiGame extends AppCompatActivity {
             game.play(bestrow, bestcol);
             Button playedAiButton = (Button) findViewById(buttons[bestrow][bestcol]);
             CellValue cellValuebest = game.valueAt(bestrow, bestcol);
-            System.out.println(cellValuebest + "Best to be played");
             playedAiButton.setText(cellValuebest.toString());
         }
 
