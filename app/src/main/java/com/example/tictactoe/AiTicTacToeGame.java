@@ -1,11 +1,15 @@
 package com.example.tictactoe;
 
+import java.util.Arrays;
+
 public class AiTicTacToeGame {
 
     private CellValue[][] board;
+    private int level;
 
     public AiTicTacToeGame(){
         this.board = new CellValue[3][3];
+        level =0;
         fillEmpty();
     }
 
@@ -73,11 +77,18 @@ public class AiTicTacToeGame {
 //    }
 
     protected void play(int row, int col){
-        int[] aiMove = findBestMove();
-        board[aiMove[0]][aiMove[1]] = CellValue.X;
-        if (movesLeft() && checkWin() != 10 && checkWin() != -10){
-            board[row][col] = CellValue.O;
+        if (row >= 3 || row < 0 || col >= 3 || col < 0){
+            throw new IllegalArgumentException("Outside the board");
         }
+        if (board[row][col] != CellValue.EMPTY){
+           throw new IllegalArgumentException();
+        }
+
+        System.out.println(nextCellValue());
+        board[row][col] = nextCellValue();
+        level++;
+        System.out.println(valueAt(row, col));
+        System.out.println(Arrays.toString(board[0]) + "\n" + Arrays.toString(board[1]) + "\n" + Arrays.toString(board[2]));
     }
 
 
@@ -207,7 +218,7 @@ public class AiTicTacToeGame {
         }
     }
 
-    private int[] findBestMove(){
+    protected int[] findBestMove(){
         int bestVal = -1000;
         int[] move = new int[] {-1, -1};
 
@@ -230,6 +241,10 @@ public class AiTicTacToeGame {
 
     public CellValue valueAt(int row, int col){
         return board[row][col];
+    }
+
+    protected CellValue nextCellValue(){
+        return (level%2 == 0) ? CellValue.X : CellValue.O;
     }
 
 

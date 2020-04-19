@@ -29,13 +29,25 @@ public class AiGame extends AppCompatActivity {
         game = new AiTicTacToeGame();
         buttons = new Integer[3][3];
         List<Integer> allButtons = getAllButtons();
+        int z=0;
         for (int i=0;i<3;i++){
             for (int j=0;j<3;j++){
-                Button currButton = (Button) findViewById(allButtons.get(i));
-                buttons[i][j] = allButtons.get(i);
+                Button currButton = (Button) findViewById(allButtons.get(z));
+                buttons[i][j] = allButtons.get(z);
                 currButton.setText("");
+                z++;
             }
         }
+
+        //System.out.println(Arrays.toString(buttons[0]));
+
+        int[] bestMove = game.findBestMove();
+        int row = bestMove[0];
+        int col = bestMove[1];
+        game.play(row, col);
+        Button playedButton = (Button) findViewById(buttons[row][col]);
+        playedButton.setText(game.valueAt(row, col).toString());
+
     }
 
     private List<Integer> getAllButtons(){
@@ -55,6 +67,7 @@ public class AiGame extends AppCompatActivity {
                 if (buttons[i][j] == buttonId){
                     buttonIndex.add(i);
                     buttonIndex.add(j);
+                    System.out.println();
                     return buttonIndex;
                 }
             }
@@ -62,7 +75,7 @@ public class AiGame extends AppCompatActivity {
         throw new IllegalArgumentException("Shouldnt be happening");
     }
 
-    protected void playGame(View v){
+    public void playGame(View v){
         if (game.checkWin() == 10 || game.checkWin() == -10){
             return;
         }
@@ -74,14 +87,30 @@ public class AiGame extends AppCompatActivity {
         if (game.valueAt(row, col) != CellValue.EMPTY){
             return;
         }
+        System.out.println(row + " " + col);
+
 
         game.play(row, col);
-        Button playedButton = (Button) findViewById(v.getId());
-        playedButton.setText(game.valueAt(row, col).toString());
+        Button playedButton = (Button) findViewById(buttons[row][col]);
+        CellValue cellValue = game.valueAt(row, col);
+        System.out.println(cellValue + "to be played");
+        playedButton.setText(cellValue.toString());
 
         if (game.checkWin() == 10 || game.checkWin() == -10){
             System.out.println("Won");
         }
+        else{
+            int[] bestMove = game.findBestMove();
+            int bestrow = bestMove[0];
+            int bestcol = bestMove[1];
+            game.play(bestrow, bestcol);
+            Button playedAiButton = (Button) findViewById(buttons[bestrow][bestcol]);
+            CellValue cellValuebest = game.valueAt(bestrow, bestcol);
+            System.out.println(cellValuebest + "Best to be played");
+            playedAiButton.setText(cellValuebest.toString());
+        }
+
+
     }
 }
 
