@@ -11,16 +11,15 @@
         android:id="@+id/twoPlayerButton"
         android:layout_width="250dp"
         android:layout_height="100dp"
+        android:layout_marginTop="184dp"
         android:onClick="create2PlayerActivity"
         android:text="@string/_2_player"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/onlineButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.342" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/aiButton"
@@ -30,24 +29,10 @@
         android:text="@string/play_against_computer"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/onlineButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/twoPlayerButton"
-        app:layout_constraintVertical_bias="0.517" />
-
-    <Button
-        android:id="@+id/onlineButton"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="80dp"
-        android:text="@string/play_online"
-        android:textSize="34sp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/twoPlayerButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
